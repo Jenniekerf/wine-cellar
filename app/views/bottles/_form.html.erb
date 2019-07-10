@@ -1,15 +1,10 @@
-<%= form_for @bottle do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.label :variety %>
-<%= f.text_field :variety %>
-<%= f.label :year %>
-<%= f.text_field :year %>
-<%= f.label :producer %>
-<%= f.text_field :producer %>
-<%= f.label :category %>
-<%= f.text_field :category %>
-<%= f.submit "Add Bottle" %>
+<%= simple_form_for @bottle do |f| %>
+<%= f.input :name %>
+<%= f.input :variety %>
+<%= f.input :year %>
+<%= f.input :producer %>
+<%= f.input :category %>
+<%= f.submit :submit %>
 
 
 <% end %>
