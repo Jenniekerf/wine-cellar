@@ -1,4 +1,4 @@
-class Bottle < ActiveRecord::Base
+class Bottle < ApplicationRecord
   belongs_to :user
   belongs_to :category
   has_many :comments
