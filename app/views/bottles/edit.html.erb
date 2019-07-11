@@ -1,2 +1,12 @@
 <h1>Edit Bottle</h1>
-<%= render 'form' %>
+
+<%= simple_form_for @bottle do |f| %>
+<%= f.select :category_id, @categories %>
+<%= f.input :name %>
+<%= f.input :variety %>
+<%= f.input :year, as: :date, discard_day: true, discard_month: true %>
+<%= f.input :producer %>
+<%= f.submit "Add Bottle"%>
+
+
+<% end %>

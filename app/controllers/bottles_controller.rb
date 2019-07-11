@@ -26,10 +26,12 @@ class BottlesController < ApplicationController
 
   def edit
     @bottle = Bottle.find(params[:id])
+    @categories = Category.all.map{ |cat| [cat.name, cat.id] }
   end
 
   def update
     @bottle = Bottle.find(params[:id])
+    @bottle.category_id = params[:category_id]
     if @bottle.update(bottle_params)
       redirect_to bottle_path(@bottle)
     else
@@ -46,7 +48,7 @@ class BottlesController < ApplicationController
   private
 
   def bottle_params
-    params.require(:bottle).permit(:name, :variety, :producer, :year, :category)
+    params.require(:bottle).permit(:name, :variety, :producer, :year, :category_id)
   end
 
 end
