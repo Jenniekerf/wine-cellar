@@ -1,5 +1,5 @@
 class Bottle < ApplicationRecord
-  belongs_to :user, optional: true
+  belongs_to :user
   belongs_to :category, optional: true
   has_many :comments
   has_many :commentors, through: :comments

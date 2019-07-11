@@ -1,9 +1,10 @@
 <%= simple_form_for @bottle do |f| %>
+<%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select a category") %>
 <%= f.input :name %>
 <%= f.input :variety %>
 <%= f.input :year, as: :date, discard_day: true, discard_month: true %>
 <%= f.input :producer %>
-<%= f.submit %>
+<%= f.submit "Add Bottle"%>
 
 
 <% end %>

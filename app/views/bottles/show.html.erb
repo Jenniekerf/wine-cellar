@@ -1,0 +1,11 @@
+<h2><%= @bottle.name %></h2>
+<h3><%= @bottle.variety %></h3>
+<h3><%= @bottle.year %></h3>
+<h3><%= @bottle.producer %></h3>
+<% if logged_in? %>
+<% if @bottle.user_id == current_user.id %>
+
+<%= link_to 'Edit', edit_bottle_path(@bottle)%>
+<%= link_to 'Delete', bottle_path(@bottle), method: :delete%>
+<% end %>
+<% end %>

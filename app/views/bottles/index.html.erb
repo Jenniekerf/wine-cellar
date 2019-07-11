@@ -1,5 +1,7 @@
 <h1>Bottles</h1>
 
 <% @bottles.each do |b| %>
-<%= b.name %>
+<h2><%= link_to b.name, bottle_path(b) %></h2>
 <% end %>
+
+<%= link_to "Add Bottle", new_bottle_path %>
