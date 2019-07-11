@@ -1,7 +1,5 @@
-<%= form_for @user, url: '/login' do |f| %>
-<%= f.label :username %>
-<%= f.text_field :username %>
-<%= f.label :password %>
-<%= f.password_field :password %>
+<%= simple_form_for @user  do |f| %>
+<%= f.input :username %>
+<%= f.input :password %>
 <%= f.submit "Log In" %>
 <% end %>

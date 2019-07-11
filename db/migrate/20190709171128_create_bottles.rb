@@ -4,7 +4,8 @@ class CreateBottles < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :variety
       t.string :producer
-      t.datetime :year
+      t.date :year
+      t.string :category
 
       t.timestamps
     end

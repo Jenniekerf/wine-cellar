@@ -16,7 +16,8 @@ ActiveRecord::Schema.define(version: 2019_07_09_171959) do
     t.string "name"
     t.string "variety"
     t.string "producer"
-    t.datetime "year"
+    t.date "year"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

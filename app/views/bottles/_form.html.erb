@@ -1,10 +1,9 @@
 <%= simple_form_for @bottle do |f| %>
 <%= f.input :name %>
 <%= f.input :variety %>
-<%= f.input :year %>
+<%= f.input :year, as: :date, discard_day: true, discard_month: true %>
 <%= f.input :producer %>
-<%= f.input :category %>
-<%= f.submit :submit %>
+<%= f.submit %>
 
 
 <% end %>
