@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to bottles_path
     else
-      redirect_to 'login'
+      redirect_to '/login'
     end
   end
 
@@ -19,6 +19,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
-    redirect_to '/'
+    redirect_to '/login'
   end
 end

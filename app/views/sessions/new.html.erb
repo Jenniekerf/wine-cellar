@@ -1,5 +1,5 @@
 <%= simple_form_for @user, url: login_path  do |f| %>
-<%= f.input :username %>
+<%= f.input :username, label: 'Your username please' %>
 <%= f.input :password %>
 <%= f.submit "Log In" %>
 <% end %>

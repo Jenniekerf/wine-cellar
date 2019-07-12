@@ -3,6 +3,13 @@
 <h3><%= @bottle.year.year %></h3>
 <h3><%= @bottle.producer %></h3>
 <h3>$<%= @bottle.price_cents %></h3>
+
+<%= render @bottle.comments %>
+
+<div>
+<%= link_to "Add Tasting Notes", new_bottle_comment_path(@bottle) %>
+</div>
+
 <% if logged_in? %>
 <% if @bottle.user_id == current_user.id %>
 

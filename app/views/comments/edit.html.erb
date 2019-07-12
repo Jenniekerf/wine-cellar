@@ -1,0 +1,6 @@
+<h1>Edit Tasting Notes</h1>
+
+<%= simple_form_for([@bottle, @comment]) do |f| %>
+<%= f.input :tasting_note %>
+<%= f.submit "Edit Note" %>
+<% end %>

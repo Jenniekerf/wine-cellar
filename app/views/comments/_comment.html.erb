@@ -1,0 +1,12 @@
+<p><%= comment.tasting_note %></p>
+
+<% if logged_in? %>
+  <% if comment.user_id == current_user.id %>
+
+
+
+<%= link_to "Edit", edit_bottle_comment_path(comment.bottle, comment) %>
+<%= link_to "Delete", bottle_comment_path(comment.bottle, comment), method: :delete %>
+
+<% end %>
+<% end %>
