@@ -8,6 +8,10 @@ class BottlesController < ApplicationController
     @bottle = Bottle.find(params[:id])
   end
 
+  def home
+    @bottles = current_user.bottles
+  end
+
   def new
     @bottle = current_user.bottles.build
     @categories = Category.all.map{ |cat| [cat.name, cat.id] }
