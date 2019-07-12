@@ -18,7 +18,7 @@ class BottlesController < ApplicationController
     @bottle.category_id = params[:category_id]
 
     if @bottle.save
-      redirect_to root_path
+      redirect_to bottles_path
     else
       render 'new'
     end

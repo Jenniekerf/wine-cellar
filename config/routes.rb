@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   end
   resources :users
 
-  root 'bottles#index'
+  root 'sessions#home'
 
 end
