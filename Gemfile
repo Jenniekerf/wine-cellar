@@ -17,6 +17,7 @@ gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'simple_form'
 gem 'popper_js', '~> 1.14.5'
 gem 'money-rails', '~>1.12'
+gem 'pry'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
