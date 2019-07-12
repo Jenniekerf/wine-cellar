@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_11_185741) do
+ActiveRecord::Schema.define(version: 2019_07_12_012643) do
 
   create_table "bottles", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2019_07_11_185741) do
     t.string "producer"
     t.date "year"
     t.string "category"
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "USD", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -31,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_07_11_185741) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text "comments"
+    t.text "comment"
     t.integer "user_id"
     t.integer "bottle_id"
     t.datetime "created_at", null: false

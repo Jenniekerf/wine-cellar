@@ -2,6 +2,7 @@
 <h3><%= @bottle.variety %></h3>
 <h3><%= @bottle.year.year %></h3>
 <h3><%= @bottle.producer %></h3>
+<h3>$<%= @bottle.price_cents %></h3>
 <% if logged_in? %>
 <% if @bottle.user_id == current_user.id %>
 

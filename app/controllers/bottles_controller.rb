@@ -48,7 +48,7 @@ class BottlesController < ApplicationController
   private
 
   def bottle_params
-    params.require(:bottle).permit(:name, :variety, :producer, :year, :category_id)
+    params.require(:bottle).permit(:name, :variety, :producer, :year, :price_cents, :category_id)
   end
 
 end

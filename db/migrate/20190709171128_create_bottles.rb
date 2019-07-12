@@ -6,6 +6,7 @@ class CreateBottles < ActiveRecord::Migration[5.2]
       t.string :producer
       t.date :year
       t.string :category
+      t.monetize :price
 
       t.timestamps
     end
