@@ -1,3 +1,8 @@
+<h1>My Wine Cellar</h1>
+<br>
+<h2>Bottles:</h2>
 <% current_user.bottles.each do |b| %>
 <h2><%= link_to b.name, bottle_path(b) %></h2>
 <% end %>
+
+<%= link_to "Add Bottle", new_bottle_path %>
