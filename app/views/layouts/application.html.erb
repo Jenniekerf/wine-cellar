@@ -16,20 +16,21 @@
 
   <body>
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-expand-sm">
 
       <div class="container">
 
         <div class="navbar-header">
 
           </div>
-            <%= link_to "Wine Cellar", root_path, class: "navbar-brand" %>
+            <%= link_to "Discover the World through Wine", root_path, class: "navbar-brand" %>
         </div>
 
         <ul class="nav navbar-nav">
            <li><%= link_to "Sign Up", signup_path %></li>
            <% if logged_in? %>
-           <%= link_to "Log Out", logout_path %>
+           <li><%= link_to "Log Out", logout_path %></li>
+           <li><%= link_to "My Private Cellar", bottles_home_path %></li>
            <% else %>
            <li><%= link_to "Log In", login_path %></li>
            <% end %>
