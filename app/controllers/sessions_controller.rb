@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login
 
   def new
     @user = User.new
@@ -19,6 +20,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
+    flash[:notice] = "You have successfully logged out."
     redirect_to '/'
   end
 end

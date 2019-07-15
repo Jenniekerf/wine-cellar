@@ -19,6 +19,7 @@ gem 'popper_js', '~> 1.14.5'
 gem 'money-rails', '~>1.12'
 gem 'pry'
 gem 'bootstrap'
+gem 'rack-flash3'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

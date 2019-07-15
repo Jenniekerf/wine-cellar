@@ -1,3 +1,5 @@
+<%= flash[:error]%>
+<br></br>
 <%= simple_form_for @user, url: login_path  do |f| %>
 <%= f.input :username, label: 'Your username please' %>
 <%= f.input :password %>

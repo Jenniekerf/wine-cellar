@@ -1,4 +1,5 @@
 class BottlesController < ApplicationController
+  skip_before_action :require_login, only: [:index, :show, :cheap, :moderate, :fancy]
 
   def index
     @bottles = Bottle.all
@@ -66,5 +67,7 @@ class BottlesController < ApplicationController
   def bottle_params
     params.require(:bottle).permit(:name, :variety, :producer, :year, :price_cents, :category_id)
   end
+
+
 
 end
