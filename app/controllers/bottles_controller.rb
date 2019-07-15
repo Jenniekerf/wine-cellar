@@ -8,6 +8,18 @@ class BottlesController < ApplicationController
     @bottle = Bottle.find(params[:id])
   end
 
+  def cheap
+    @bottles = Bottle.cheap
+  end
+
+  def moderate
+    @bottles = Bottle.moderate
+  end
+
+  def fancy
+    @bottles = Bottle.fancy
+  end
+
   def home
     @bottles = current_user.bottles
   end
