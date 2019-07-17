@@ -1,0 +1,5 @@
+<h1> Red Bottles</h1>
+
+<% @red_wine.each do |r| %>
+<h2><%= link_to r.name, bottle_path(r) %></h2>
+<% end %>

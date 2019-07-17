@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+ Category.create(:name => "Red")
+ Category.create(:name => "White")
+ Category.create(:name => "Rosé")
+ Category.create(:name => "Sparkling")
+ Category.create(:name => "Orange")
+ Category.create(:name => "Dessert")

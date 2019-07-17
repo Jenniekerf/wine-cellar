@@ -1,7 +1,9 @@
 <h1>New Bottle</h1>
 
 <%= simple_form_for @bottle do |f| %>
-<%= select_tag(:category_id, options_for_select(["Red", "White", "Rosé", "Sparkling", "Dessert"]), :prompt => "Select a category") %>
+
+
+<%= f.input :category, :collection => ['Red','White','Rosé', 'Sparkling', 'Orange', 'Dessert'] %>
 <%= f.input :name %>
 <%= f.input :variety %>
 <%= f.input :year, as: :date, start_year: Date.today.year - 90,
