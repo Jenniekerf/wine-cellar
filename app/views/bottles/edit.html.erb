@@ -1,13 +1,13 @@
 <h1>Edit Bottle</h1>
 
 <%= simple_form_for @bottle do |f| %>
-<%= f.select :category_id, @categories %>
+<%= f.input :category, :collection => ['Red','White','Rosé', 'Sparkling', 'Orange', 'Dessert'] %>
 <%= f.input :name %>
 <%= f.input :variety %>
 <%= f.input :year, as: :date, discard_day: true, discard_month: true %>
 <%= f.input :producer %>
 <%= f.input :price_cents, label: "Price in USD" %>
-<%= f.submit "Add Bottle"%>
+<%= f.submit "Update Bottle"%>
 
 
 <% end %>
