@@ -35,13 +35,28 @@
                    Search by Price
                  </a>
                  <div class="dropdown-menu">
-                   <a class="dropdown-item" href="#"><%= link_to "Cheap Wines", bottles_cheap_path %></a>
-                   <a class="dropdown-item" href="#"><%= link_to "Moderate Wines", bottles_moderate_path %></a>
-                   <a class="dropdown-item" href="#"><%= link_to "Fancy Wines", bottles_fancy_path %></a>
+                   <a class="dropdown-item" href="#"><%= link_to "Under $20", bottles_cheap_path %></a>
+                   <a class="dropdown-item" href="#"><%= link_to "$20 - $40", bottles_moderate_path %></a>
+                   <a class="dropdown-item" href="#"><%= link_to "Over $40", bottles_fancy_path %></a>
                  </div>
                </li>
 
-               
+               <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Search by Color
+                      </a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#"><%= link_to "Red Wines", bottles_red_wine_path %></a>
+                        <a class="dropdown-item" href="#"><%= link_to "White Wines", bottles_white_wine_path %></a>
+                        <a class="dropdown-item" href="#"><%= link_to "Rosé Wines", bottles_rose_wine_path %></a>
+                        <a class="dropdown-item" href="#"><%= link_to "Orange Wines", bottles_orange_wine_path %></a>
+                        <a class="dropdown-item" href="#"><%= link_to "Sparkling Wines", bottles_sparkling_wine_path %></a>
+                        <a class="dropdown-item" href="#"><%= link_to "Dessert Wines", bottles_dessert_wine_path %></a>
+                      </div>
+                    </li>
+
+
+
 
 
             <li><%= link_to "All Bottles", bottles_path %></li>

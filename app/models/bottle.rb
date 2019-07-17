@@ -1,6 +1,6 @@
 class Bottle < ApplicationRecord
-  scope :cheap, -> { where(price_cents: 0..20) }
-  scope :moderate, -> { where(price_cents: 21..40) }
+  scope :cheap, -> { where(price_cents: 0..19) }
+  scope :moderate, -> { where(price_cents: 20..40) }
   scope :fancy, -> { where(price_cents: 41..Float::INFINITY)}
   scope :red_wine, -> { where(category: "Red") }
   scope :white_wine, -> { where(category: "White") }
