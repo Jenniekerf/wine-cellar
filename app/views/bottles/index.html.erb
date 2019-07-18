@@ -1,7 +1,14 @@
-<h1>Bottles</h1>
+
+<h1>All Bottles</h1>
+
+<div class="row">
 
 <% @bottles.each do |b| %>
+
 <h2><%= link_to b.name, bottle_path(b) %></h2>
+</div>
 <% end %>
+
+
 
 <%= link_to "Add Bottle", new_bottle_path %>

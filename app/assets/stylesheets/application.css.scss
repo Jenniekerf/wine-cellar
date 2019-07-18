@@ -2,8 +2,16 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ @mixin background-tile {
+	box-sizing: border-box;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 3px 3px 5px 6px #ccc;
+	padding: 1.5em 1.25em;
+}
+
 body {
-	background-color: #f5f5f5;
+	background-color: transparent;
 	font-family: 'Lora', serif;
 }
 
@@ -111,5 +119,90 @@ p.alert, p.notice {
 		font-weight: 300;
 		margin-top: 40px;
 	}
+
+  .comments {
+
+	@include background-tile;
+	margin-top: 40px;
+
+	h1 {
+		margin-top: 0;
+		margin-bottom: 15px;
+		font-size: 2em;
+	}
+
+	.comment {
+		border-bottom: 1px solid gainsboro;
+		margin-bottom: 15px;
+		padding-bottom: 10px;
+
+		.bottle-comment {
+			font-size: 1.05em;
+			line-height: 1.5;
+		}
+
+	}
+
+	.new-comment {
+		padding-top: 8px;
+	}
+
+}
+
+/* New Book Form styles */
+
+.new-bottle-form {
+	@include background-tile;
+
+	h1 {
+		margin-top: 0;
+	}
+
+}
+
+
+/* Edit Book Form styles */
+
+.edit-bottle-form {
+
+	@include background-tile;
+
+	h1 {
+		margin-top: 0;
+	}
+
+}
+
+/* New/Edit review form styles */
+
+.new-comment-form, .edit-comment-form {
+	@include background-tile;
+
+	h1 {
+		margin-top: 0;
+	}
+
+}
+
+
+/* Signup/Login form styles */
+
+.signup-form {
+	@include background-tile;
+
+	h2 {
+		margin-top: 0;
+	}
+
+}
+
+.login-form {
+	@include background-tile;
+
+	h2 {
+		margin-top: 0;
+	}
+
+}
 
 }
