@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
 
+
   def new
     @bottle = Bottle.find(params[:bottle_id])
     @comment = Comment.new

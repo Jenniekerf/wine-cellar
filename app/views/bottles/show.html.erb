@@ -24,7 +24,7 @@
 <% if logged_in? %>
 <% if @bottle.user_id == current_user.id %>
 
-<%= link_to 'Edit Bottle', edit_bottle_path(@bottle)%>
+<%= link_to 'Edit Bottle', edit_bottle_path(@bottle) %>
 <br>
 <%= link_to 'Delete Bottle', bottle_path(@bottle), method: :delete%>
 <% end %>

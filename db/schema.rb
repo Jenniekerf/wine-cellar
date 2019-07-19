@@ -25,12 +25,6 @@ ActiveRecord::Schema.define(version: 2019_07_17_000128) do
     t.integer "user_id"
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "comments", force: :cascade do |t|
     t.text "tasting_note"
     t.integer "user_id"
