@@ -60,8 +60,9 @@ class BottlesController < ApplicationController
     if @bottle.save
       redirect_to bottles_home_path
     else
+      flash[:error] = "Your bottle was not added. You must fill out all fields"
       render 'new'
-    end
+      end
   end
 
   def edit
