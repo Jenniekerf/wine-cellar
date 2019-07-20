@@ -20,6 +20,9 @@ gem 'money-rails', '~>1.12'
 gem 'pry'
 gem 'bootstrap'
 gem 'rack-flash3'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
