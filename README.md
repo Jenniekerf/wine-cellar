@@ -1,24 +1,9 @@
-# README
+Wine-Cellar
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Wine-Cellar is an app for wine lovers that needs a little help organizing and keeping track of their wines, either their actual wine selection or just the wines they tried and liked.
 
-Things you may want to cover:
+To run this app you copy the repository url in github. In your terminal, put 'git clone' and paste in the url on the same line. Press enter. CD in to that repository and then you can run the app by starting a rails server by putting 'rails s' in your terminal.
 
-* Ruby version
+In order to fully use the app you'll have to sign up either with a username and email or through your Github account.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Enjoy!

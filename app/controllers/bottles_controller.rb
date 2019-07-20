@@ -23,27 +23,27 @@ class BottlesController < ApplicationController
   end
 
   def red_wine
-    @red_wine = Bottle.red_wine
+    @bottles = Bottle.red_wine
   end
 
   def white_wine
-    @white_wine = Bottle.white_wine
+    @bottles = Bottle.white_wine
   end
 
   def rosé_wine
-    @rosé_wine = Bottle.rosé_wine
+    @bottles = Bottle.rosé_wine
   end
 
   def sparkling_wine
-    @sparkling_wine = Bottle.sparkling_wine
+    @bottles = Bottle.sparkling_wine
   end
 
   def orange_wine
-    @orange_wine = Bottle.orange_wine
+    @bottles = Bottle.orange_wine
   end
 
   def dessert_wine
-    @dessert_wine = Bottle.dessert_wine
+    @bottles = Bottle.dessert_wine
   end
 
   def home
