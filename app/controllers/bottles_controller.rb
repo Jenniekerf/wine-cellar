@@ -58,7 +58,7 @@ class BottlesController < ApplicationController
     @bottle = current_user.bottles.build(bottle_params)
 
     if @bottle.save
-      redirect_to bottles_path
+      redirect_to bottles_home_path
     else
       render 'new'
     end
