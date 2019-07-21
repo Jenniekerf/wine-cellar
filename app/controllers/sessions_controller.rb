@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
 
       redirect_to bottles_path
     else
+      flash[:error] = "Invalid login name or password. Try again!."
       redirect_to '/login'
     end
   end
