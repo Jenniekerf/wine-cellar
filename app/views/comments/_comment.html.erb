@@ -1,19 +1,18 @@
 <div class="comment">
 
-  <p class="bottle-comment"><%= comment.tasting_note %></p>
+  <ul>
+  <p class="bottle-comment"><li><%= comment.tasting_note %> - <%= comment.commentor.username %></li>
+    <% if logged_in? %>
+      <% if comment.user_id == current_user.id %>
 
+      <div class="links btn-group">
 
+    <%= link_to "Edit", edit_bottle_comment_path(comment.bottle, comment) %>
+    <%= link_to "Delete", bottle_comment_path(comment.bottle, comment), method: :delete, data: {confirm: "Are you sure?" } %>
+    </div>
 
-<% if logged_in? %>
-  <% if comment.user_id == current_user.id %>
-
-  <div class="links btn-group">
-
-<%= link_to "Edit", edit_bottle_comment_path(comment.bottle, comment), class: "btn btn-custom" %>
-<%= link_to "Delete", bottle_comment_path(comment.bottle, comment), method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-custom" %>
-</div>
-
-<% end %>
-<% end %>
-
+    <% end %>
+    <% end %>
+</p>
+</ul>
 </div>

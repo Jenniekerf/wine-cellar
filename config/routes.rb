@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/auth/github/callback' => 'sessions#create'
-  get '/bottles/home'
-  get '/bottles/cheap'
-  get '/bottles/moderate'
-  get '/bottles/fancy'
+  get '/bottles/home' => 'bottles#home'
+  get '/bottles/cheap' => 'bottles#cheap'
+  get '/bottles/moderate' => 'bottles#moderate'
+  get '/bottles/fancy' => 'bottles#fancy'
   get '/bottles/red_wine' => 'bottles#red_wine'
   get '/bottles/white_wine' => 'bottles#white_wine'
   get '/bottles/orange_wine' => 'bottles#orange_wine'
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :bottles do
     resources :comments
   end
+  
   resources :users
 
   root 'sessions#home'
