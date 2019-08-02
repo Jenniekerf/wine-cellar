@@ -3,7 +3,11 @@ class BottlesController < ApplicationController
   before_action :find_bottle, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bottles = Bottle.all
+    if params[:name]
+      @bottles = Bottle.where('name LIKE ?', "%#{params[:name]}%")
+    else
+     @bottles = Bottle.all
+  end
   end
 
   def show
