@@ -1,13 +1,13 @@
 class BottlesController < ApplicationController
   skip_before_action :require_login, only: [:index, :show, :cheap, :moderate, :fancy, :red_wine, :white_wine, :rosé_wine, :orange_wine, :sparkling_wine, :dessert_wine]
-
+  before_action :find_bottle, only: [:show, :edit, :update, :destroy]
 
   def index
     @bottles = Bottle.all
   end
 
   def show
-    @bottle = Bottle.find(params[:id])
+
   end
 
   def cheap
@@ -65,11 +65,10 @@ class BottlesController < ApplicationController
   end
 
   def edit
-    @bottle = Bottle.find(params[:id])
+
   end
 
   def update
-    @bottle = Bottle.find(params[:id])
     if @bottle.update(bottle_params)
       redirect_to bottle_path(@bottle)
     else
@@ -78,7 +77,6 @@ class BottlesController < ApplicationController
   end
 
   def destroy
-    @bottle = Bottle.find(params[:id])
     @bottle.destroy
     redirect_to bottles_path
   end
@@ -87,6 +85,10 @@ class BottlesController < ApplicationController
 
   def bottle_params
     params.require(:bottle).permit(:name, :variety, :producer, :year, :price_cents, :category)
+  end
+
+  def find_bottle
+  @bottle = Bottle.find(params[:id])
   end
 
 

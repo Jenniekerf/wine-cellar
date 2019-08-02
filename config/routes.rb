@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :bottles do
     resources :comments
   end
-  
+
   resources :users
 
   root 'sessions#home'
