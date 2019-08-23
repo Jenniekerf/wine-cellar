@@ -1,13 +1,12 @@
 
 <h1>All Bottles</h1>
 
-<div class="row">
-
 <%= form_tag(bottles_path, method: :get) do %>
 <%= text_field_tag(:name, params[:name]) %>
-<%= submit_tag ("Search") %>
+<%= submit_tag ("Search By Name") %>
 <% end %>
 
+<div class="row">
 <% @bottles.each do |b| %>
 
 <h2><%= link_to b.name, bottle_path(b) %></h2>
