@@ -11,7 +11,7 @@ class BottlesController < ApplicationController
   end
 
   def show
-
+    render json: @bottle
   end
 
   def cheap
