@@ -6,13 +6,9 @@
 <%= submit_tag ("Search By Name") %>
 <% end %>
 
-<div class="row">
 <% @bottles.each do |b| %>
-
-<h2><%= link_to b.name, bottle_path(b) %></h2>
-</div>
+  <h2><%= link_to b.name, bottle_path(b) %></h2>
 <% end %>
-
 
 
 <%= link_to "Add Bottle", new_bottle_path %>
