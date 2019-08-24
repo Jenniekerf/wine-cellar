@@ -52,6 +52,10 @@ class BottlesController < ApplicationController
 
   def home
     @bottles = current_user.bottles
+    respond_to do |format|
+      format.html { render :home }
+      format.json { render json: @bottles }
+    end
   end
 
   def new
