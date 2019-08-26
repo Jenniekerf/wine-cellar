@@ -11,7 +11,11 @@ class BottlesController < ApplicationController
   end
 
   def show
-
+    respond_to do |format|
+      format.html { render :home }
+      format.json { render json: @bottle, status: 200 }
+    #render json: @bottle, status: 200
+  end
   end
 
   def cheap
@@ -52,6 +56,7 @@ class BottlesController < ApplicationController
 
   def home
     @bottles = current_user.bottles
+    #render json: @bottles
     respond_to do |format|
       format.html { render :home }
       format.json { render json: @bottles }
