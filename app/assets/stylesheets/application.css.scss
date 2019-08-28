@@ -25,6 +25,10 @@ p.alert, p.notice {
 	margin: 0;
 }
 
+ul li:empty {
+   display: none;
+}
+
 /* Navbar/navigation styles */
 
 .navbar {
