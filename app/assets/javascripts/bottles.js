@@ -3,10 +3,9 @@
 const BASE_URL = 'http://localhost:3000'
 
 function getBottles() {
-
  let main = document.getElementById('main');
  main.innerHTML = '<ul>';
- fetch(BASE_URL + '/bottles/home.json')
+ fetch( '/bottles/home_index')
  .then(resp => resp.json())
  .then(bottles => {
    main.innerHTML += bottles.map(bottle => `<li><a href="#" data-id="${bottle.id}">${bottle.name}</a></li>`).join('')
@@ -16,31 +15,30 @@ function getBottles() {
 
 
 
-
-function getBottleInfo() {
-
-  let main = document.getElementById('main');
-  main.innerHTML = '<ul>';
-  fetch(BASE_URL + '/bottles/' + id + '.json')
-  .then(resp => resp.json())
-  .then(bottle => {
-    main.innerHTML += `<h2>${bottle.name}</h2>`
-    main.innerHTML += '</ul>'
-  })
-}
-
-function displayCommentForm() {
-  let commentFormDiv = document.getElementById('comment-form');
+function displayBottleForm() {
+  let bottleFormDiv = document.getElementById('bottle-form');
   let html = `
-<form onsubmit="createComment(); return false;">
-  <label>Tasting Note: </label>
-  <input type="text" id="tasting-note"><br/>
-  <input type="submit" value="Add comment">
+<form onsubmit="createBottle(); return false;">
+  <label>Name: </label>
+  <input type="text" id="name"><br/>
+  <label>Variety: </label>
+  <input type="text" id="variety"><br/>
+  <label>Producer: </label>
+  <input type="text" id="producer"><br/>
+  <label>Year: </label>
+  <input type="date" id="year"><br/>
+  <label>Category: </label>
+  <input type="text" id="category"><br/>
+  <label>Price: </label>
+  <input type="number" id="price"><br/>
+
+  <input type="submit" value="Add Bottle">
 </form>
 `
 
-commentFormDiv.innerHTML = html;
+bottleFormDiv.innerHTML = html;
 }
+
 
 
 // function displayBottleInfo(e) {
@@ -57,22 +55,28 @@ commentFormDiv.innerHTML = html;
 //   })
 // }
 //
-function createComment() {
-  const comment = {
-    comment: document.getElementById('tasting_note').value
+function createBottle() {
+  const bottle = {
+    name: document.getElementById('name').value,
+    variety: document.getElementById('variety').value,
+    producer: document.getElementById('producer').value,
+    year: document.getElementById('year').value,
+    category: document.getElementById('category').value,
+    price: document.getElementById('price').value
+
    }
-  fetch(BASE_URL + '/bottles/' + bottle_id + '/comments', {
+  fetch(BASE_URL + '/bottles', {
     method: 'POST',
-      body: JSON.stringify({ comment }),
+      body: JSON.stringify({ bottle }),
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     }
   }).then(resp => resp.json())
-  .then(comment => {
-    document.querySelector("#main ul").innerHTML += `<li>${comment.tasting_note} - ${comment.commentor.username}</li>`
-    let commentFormDiv = document.getElementById('comment-form');
-    commentFormDiv.innerHTML = '';
+  .then(bottle => {
+    document.querySelector("#main ul").innerHTML += `<li>${bottle.name}</li>`
+    let bottleFormDiv = document.getElementById('bottle-form');
+    bottleFormDiv.innerHTML = '';
   })
 }
 

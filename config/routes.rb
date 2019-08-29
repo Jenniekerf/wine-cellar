@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get '/bottles/rose_wine' => 'bottles#rosé_wine'
   get '/bottles/sparkling_wine' => 'bottles#sparkling_wine'
   get '/bottles/dessert_wine' => 'bottles#dessert_wine'
-
+  get '/bottles/home_index' => 'bottles#home_index'
 
   resources :bottles do
     resources :comments

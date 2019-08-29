@@ -4,18 +4,11 @@
 
 <div class="col=md-6 col-md-offset-3">
 
+
+
 <h1><a href="#" onclick="getBottles(); return false;">Bottles</a></h1>
 
-<div id="comment-form"></div>
-<div id="main">
-<ul>
-<% current_user.bottles.each do |b| %>
+<div id="bottle-form"></div>
+<div id="main"></div>
 
-<h2><a href="#" onclick="getBottleInfo()"><%=b.name%></a></h2>
-<a href="#" onclick="displayCommentForm(); return false;">Add comment</a>
-<% end %>
-</ul>
-</div>
-
-
-<%= link_to "Add Bottle", new_bottle_path %>
+<a href="#" onclick="displayBottleForm(); return false;">Add Bottle</a>
