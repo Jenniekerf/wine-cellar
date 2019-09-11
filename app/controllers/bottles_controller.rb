@@ -1,6 +1,7 @@
 class BottlesController < ApplicationController
-  skip_before_action :require_login, only: [:index, :show, :cheap, :moderate, :fancy, :red_wine, :white_wine, :rosé_wine, :orange_wine, :sparkling_wine, :dessert_wine]
-  before_action :find_bottle, only: [:show, :edit, :update, :destroy]
+skip_before_action :verify_authenticity_token, only: [:home_index]
+skip_before_action :require_login, only: [:index, :show, :cheap, :moderate, :fancy, :red_wine, :white_wine, :rosé_wine, :orange_wine, :sparkling_wine, :dessert_wine]
+before_action :find_bottle, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:name]
@@ -52,7 +53,7 @@ class BottlesController < ApplicationController
   end
 
   def home
-    
+
   end
 
   def home_index
@@ -65,13 +66,19 @@ class BottlesController < ApplicationController
   end
 
   def create
-    @bottle = current_user.bottles.build(bottle_params)
-
-    if @bottle.save
-      redirect_to bottles_home_path
+    bottle = current_user.bottles.build(bottle_params)
+    if bottle.save
+      render json: bottle, status: 201
     else
-      render 'new'
-      end
+      render json: bottle, status: :bad_request
+    end
+    # @bottle = current_user.bottles.build(bottle_params)
+    #
+    # if @bottle.save
+    #   redirect_to bottles_home_path
+    # else
+    #   render 'new'
+    #   end
   end
 
   def edit

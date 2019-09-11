@@ -3,6 +3,7 @@
 const BASE_URL = 'http://localhost:3000'
 
 function getBottles() {
+  clearForm();
  let main = document.getElementById('main');
  main.innerHTML = '<ul>';
  fetch( '/bottles/home_index')
@@ -26,11 +27,19 @@ function displayBottleForm() {
   <label>Producer: </label>
   <input type="text" id="producer"><br/>
   <label>Year: </label>
-  <input type="date" id="year"><br/>
+  <input type="number" min="1950" max="2099" step="1" value="2019"/><br/>
   <label>Category: </label>
-  <input type="text" id="category"><br/>
-  <label>Price: </label>
-  <input type="number" id="price"><br/>
+  <select name="category">
+  <option value="red">Red</option>
+  <option value="white">White</option>
+  <option value="rose">Rose</option>
+  <option value="orange">Orange</option>
+  <option value="sparkling">Sparkling</option>
+  <option value="dessert">Dessert</option>
+</select><br/>
+
+  <label>Price in USD: </label>
+  <input type="number" id="price" min="1"><br/>
 
   <input type="submit" value="Add Bottle">
 </form>
@@ -41,20 +50,19 @@ bottleFormDiv.innerHTML = html;
 
 
 
-// function displayBottleInfo(e) {
-//   debugger
-// e.preventDefault();
-// clearForm();
-// let id = this.dataset.id;
-// let main = document.getElementById('main');
-// main.innerHTML = '';
-// fetch(BASE_URL + '/bottles/' + id + '.json')
-//   .then(resp => resp.json())
-//   .then(bottle => {
-//     main.innerHTML += `<h2>${bottle.name}</h2>`
-//   })
-// }
-//
+function displayBottleInfo(e) {
+e.preventDefault();
+
+let id = this.dataset.id;
+let main = document.getElementById('main');
+main.innerHTML = '';
+fetch('/bottles/' + id)
+  .then(resp => resp.json())
+  .then(bottle => {
+    main.innerHTML += `<h2>${bottle.name}</h2>`
+  })
+}
+
 function createBottle() {
   const bottle = {
     name: document.getElementById('name').value,
@@ -63,9 +71,8 @@ function createBottle() {
     year: document.getElementById('year').value,
     category: document.getElementById('category').value,
     price: document.getElementById('price').value
-
    }
-  fetch(BASE_URL + '/bottles', {
+  fetch( '/bottles/home_index', {
     method: 'POST',
       body: JSON.stringify({ bottle }),
     headers: {
@@ -75,6 +82,7 @@ function createBottle() {
   }).then(resp => resp.json())
   .then(bottle => {
     document.querySelector("#main ul").innerHTML += `<li>${bottle.name}</li>`
+    debugger
     let bottleFormDiv = document.getElementById('bottle-form');
     bottleFormDiv.innerHTML = '';
   })
@@ -82,7 +90,7 @@ function createBottle() {
 
 
 
-// function clearForm() {
-//   let commentFormDiv = document.getElementById('comment-form');
-// commentFormDiv.innerHTML = '';
-// }
+function clearForm() {
+  let bottleFormDiv = document.getElementById('bottle-form');
+bottleFormDiv.innerHTML = '';
+}
