@@ -15,8 +15,18 @@ class Bottle {
 
 	}
 
+
+
   renderBottle(){
-    return `<li>${this.name} - ${this.comments}</li>`
+    let bottleComments = this.comments.map(comment => {
+      return (`
+        <p>${comment.tasting_note}</p>
+      `)
+    }).join('')
+
+
+
+    return `<li>${this.name} - ${bottleComments}</li>`
   }
 }
 
@@ -32,6 +42,7 @@ function getBottles() {
    {const btl = new Bottle(bottle)
    return btl.renderBottle()}).join('')
    main.innerHTML += '</ul>'
+
  })
 }
 
@@ -102,7 +113,6 @@ function createBottle() {
   }).then(resp => resp.json())
   .then(bottle => {
     const btl = new Bottle(bottle)
-    debugger
     document.querySelector("#main ul").innerHTML += btl.renderBottle()
     let bottleFormDiv = document.getElementById('bottle-form');
     bottleFormDiv.innerHTML = '';
