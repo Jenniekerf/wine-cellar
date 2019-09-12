@@ -2,23 +2,25 @@
 
 	<div class="new-bottle-form">
 
-<h1>New Bottle</h1>
+		<h1>New Bottle</h1>
 
-<%= simple_form_for @bottle do |f| %>
-
-
-<%= f.input :category, :collection => ['Red','White','Rosé', 'Sparkling', 'Orange', 'Dessert'], required: true %>
-<%= f.input :name, required: true %>
-<%= f.input :variety, required: true %>
-<%= f.input :year, as: :date, start_year: Date.today.year - 90,
-                              end_year: Date.today.year, discard_day: true, discard_month: true %>
-<%= f.input :producer %>
-<%= f.input :price_cents, label: "Price in USD" %>
-<%= f.submit "Add Bottle"%>
+		<%= simple_form_for @bottle do |f| %>
 
 
+		<%= f.input :category, :collection => ['Red','White','Rosé', 'Sparkling', 'Orange', 'Dessert'], required: true %>
+		<%= f.input :name, required: true %>
+		<%= f.input :variety, required: true %>
+		<%= f.input :year, as: :date, start_year: Date.today.year - 90,
+		                              end_year: Date.today.year, discard_day: true, discard_month: true %>
+		<%= f.input :producer %>
+		<%= f.input :price_cents, label: "Price in USD" %>
+		<%= f.submit "Add Bottle"%>
 
-<% end %>
+
+
+		<% end %>
+
+
 
     </div>
 </div>

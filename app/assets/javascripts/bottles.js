@@ -2,6 +2,24 @@
 
 const BASE_URL = 'http://localhost:3000'
 
+class Bottle {
+	constructor(bottle) {
+		this.id = bottle.id
+		this.name = bottle.name
+		this.variety = bottle.variety
+    this.producer = bottle.producer
+    this.year = bottle.year
+    this.category = bottle.category
+    this.price = bottle.price
+		this.comments = bottle.comments
+	}
+
+  renderBottle(){
+    return `<li>${this.name}</li>`
+  }
+}
+
+
 function getBottles() {
   clearForm();
  let main = document.getElementById('main');
@@ -9,7 +27,9 @@ function getBottles() {
  fetch( '/bottles/home_index')
  .then(resp => resp.json())
  .then(bottles => {
-   main.innerHTML += bottles.map(bottle => `<li><a href="#" data-id="${bottle.id}">${bottle.name}</a></li>`).join('')
+   main.innerHTML += bottles.map(bottle =>
+   {const btl = new Bottle(bottle)
+   return btl.renderBottle()}).join('')
    main.innerHTML += '</ul>'
  })
 }
@@ -27,9 +47,9 @@ function displayBottleForm() {
   <label>Producer: </label>
   <input type="text" id="producer"><br/>
   <label>Year: </label>
-  <input type="number" min="1950" max="2099" step="1" value="2019"/><br/>
+  <input type="number" id="year" min="1950" max="2099" step="1" value="2019"/><br/>
   <label>Category: </label>
-  <select name="category">
+<select id="category">
   <option value="red">Red</option>
   <option value="white">White</option>
   <option value="rose">Rose</option>
@@ -37,7 +57,6 @@ function displayBottleForm() {
   <option value="sparkling">Sparkling</option>
   <option value="dessert">Dessert</option>
 </select><br/>
-
   <label>Price in USD: </label>
   <input type="number" id="price" min="1"><br/>
 
@@ -71,8 +90,8 @@ function createBottle() {
     year: document.getElementById('year').value,
     category: document.getElementById('category').value,
     price: document.getElementById('price').value
-   }
-  fetch( '/bottles/home_index', {
+    }
+  fetch(BASE_URL + '/bottles/home_index', {
     method: 'POST',
       body: JSON.stringify({ bottle }),
     headers: {
@@ -81,8 +100,8 @@ function createBottle() {
     }
   }).then(resp => resp.json())
   .then(bottle => {
-    document.querySelector("#main ul").innerHTML += `<li>${bottle.name}</li>`
-    debugger
+    const btl = new Bottle(bottle)
+    document.querySelector("#main ul").innerHTML += btl.renderBottle()
     let bottleFormDiv = document.getElementById('bottle-form');
     bottleFormDiv.innerHTML = '';
   })

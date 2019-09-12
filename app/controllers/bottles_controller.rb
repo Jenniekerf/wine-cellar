@@ -12,8 +12,8 @@ before_action :find_bottle, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-    render json: @bottle, status: 200
     #render json: @bottle, status: 200
+
   end
 
   def cheap
@@ -66,11 +66,11 @@ before_action :find_bottle, only: [:show, :edit, :update, :destroy]
   end
 
   def create
-    bottle = current_user.bottles.build(bottle_params)
-    if bottle.save
-      render json: bottle, status: 201
+    @bottle = current_user.bottles.build(bottle_params)
+    if @bottle.save
+      render json: @bottle, status: 201
     else
-      render json: bottle, status: :bad_request
+      render json: @bottle, status: :bad_request
     end
     # @bottle = current_user.bottles.build(bottle_params)
     #
