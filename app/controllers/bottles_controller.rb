@@ -1,5 +1,5 @@
 class BottlesController < ApplicationController
-skip_before_action :verify_authenticity_token, only: [:home_index]
+skip_before_action :verify_authenticity_token, only: [:home_index, :create]
 skip_before_action :require_login, only: [:index, :show, :cheap, :moderate, :fancy, :red_wine, :white_wine, :rosé_wine, :orange_wine, :sparkling_wine, :dessert_wine]
 before_action :find_bottle, only: [:show, :edit, :update, :destroy]
 

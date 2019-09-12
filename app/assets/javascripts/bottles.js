@@ -12,10 +12,11 @@ class Bottle {
     this.category = bottle.category
     this.price = bottle.price
 		this.comments = bottle.comments
+
 	}
 
   renderBottle(){
-    return `<li>${this.name}</li>`
+    return `<li>${this.name} - ${this.comments}</li>`
   }
 }
 
@@ -60,7 +61,7 @@ function displayBottleForm() {
   <label>Price in USD: </label>
   <input type="number" id="price" min="1"><br/>
 
-  <input type="submit" value="Add Bottle">
+  <input type="submit" value="Submit">
 </form>
 `
 
@@ -69,18 +70,18 @@ bottleFormDiv.innerHTML = html;
 
 
 
-function displayBottleInfo(e) {
-e.preventDefault();
-
-let id = this.dataset.id;
-let main = document.getElementById('main');
-main.innerHTML = '';
-fetch('/bottles/' + id)
-  .then(resp => resp.json())
-  .then(bottle => {
-    main.innerHTML += `<h2>${bottle.name}</h2>`
-  })
-}
+// function displayBottleInfo(e) {
+// e.preventDefault();
+//
+// let id = this.dataset.id;
+// let main = document.getElementById('main');
+// main.innerHTML = '';
+// fetch('/bottles/' + id)
+//   .then(resp => resp.json())
+//   .then(bottle => {
+//     main.innerHTML += `<h2>${bottle.name}</h2>`
+//   })
+// }
 
 function createBottle() {
   const bottle = {
@@ -101,6 +102,7 @@ function createBottle() {
   }).then(resp => resp.json())
   .then(bottle => {
     const btl = new Bottle(bottle)
+    debugger
     document.querySelector("#main ul").innerHTML += btl.renderBottle()
     let bottleFormDiv = document.getElementById('bottle-form');
     bottleFormDiv.innerHTML = '';
