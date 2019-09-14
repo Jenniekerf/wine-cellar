@@ -10,12 +10,10 @@ class Bottle {
     this.producer = bottle.producer
     this.year = bottle.year
     this.category = bottle.category
-    this.price = bottle.price
+    this.price_cents = bottle.price_cents
 		this.comments = bottle.comments
 
 	}
-
-
 
   renderBottle(){
     let bottleComments = this.comments.map(comment => {
@@ -24,9 +22,8 @@ class Bottle {
       `)
     }).join('')
 
+    return `<li><strong>${this.name}</strong></br>Variety: ${this.variety}</br>Producer: ${this.producer}</br>Year: ${this.year}</br>Category: ${this.category}</br>Price: $${this.price_cents}</br>Tasting notes: ${bottleComments}<br></br></li>`
 
-
-    return `<li>${this.name} - ${bottleComments}</li>`
   }
 }
 
@@ -43,6 +40,10 @@ function getBottles() {
    return btl.renderBottle()}).join('')
    main.innerHTML += '</ul>'
 
+
+
+   // main.innerHTML += bottles.map(bottle => `<li><a href="#" data-id="${bottle.id}">${bottle.name}</a></li>`).join('')
+   // main.innerHTML += '</ul>'
  })
 }
 
@@ -70,7 +71,9 @@ function displayBottleForm() {
   <option value="dessert">Dessert</option>
 </select><br/>
   <label>Price in USD: </label>
-  <input type="number" id="price" min="1"><br/>
+  <input type="number" id="price_cents" min="1" max="5000" step="1" value="10"><br/>
+  <label>Comments: </label>
+  <input type="textarea" id="comment"></br>
 
   <input type="submit" value="Submit">
 </form>
@@ -81,39 +84,32 @@ bottleFormDiv.innerHTML = html;
 
 
 
-// function displayBottleInfo(e) {
-// e.preventDefault();
-//
-// let id = this.dataset.id;
-// let main = document.getElementById('main');
-// main.innerHTML = '';
-// fetch('/bottles/' + id)
-//   .then(resp => resp.json())
-//   .then(bottle => {
-//     main.innerHTML += `<h2>${bottle.name}</h2>`
-//   })
-// }
 
 function createBottle() {
   const bottle = {
     name: document.getElementById('name').value,
     variety: document.getElementById('variety').value,
     producer: document.getElementById('producer').value,
-    year: document.getElementById('year').value,
+    year: document.getElementById('year').valueAsNumber,
     category: document.getElementById('category').value,
-    price: document.getElementById('price').value
+    price_cents: document.getElementById('price_cents').valueAsNumber,
+    comment: document.getElementById('comment').value
     }
+
   fetch(BASE_URL + '/bottles/home_index', {
     method: 'POST',
       body: JSON.stringify({ bottle }),
+
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     }
+
   }).then(resp => resp.json())
   .then(bottle => {
     const btl = new Bottle(bottle)
     document.querySelector("#main ul").innerHTML += btl.renderBottle()
+
     let bottleFormDiv = document.getElementById('bottle-form');
     bottleFormDiv.innerHTML = '';
   })

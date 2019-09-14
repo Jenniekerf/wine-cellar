@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.12'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+gem 'autoprefixer-rails'
 gem 'simple_form'
 gem 'popper_js', '~> 1.14.5'
 gem 'money-rails', '~>1.12'

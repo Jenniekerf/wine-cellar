@@ -12,7 +12,7 @@ before_action :find_bottle, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-    #render json: @bottle, status: 200
+    render json: @bottle, status: 200
   end
 
   def cheap
