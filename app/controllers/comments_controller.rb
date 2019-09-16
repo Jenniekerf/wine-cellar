@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-before_action :find_bottle, only: [:show, :edit, :update, :destroy]
+before_action :find_bottle
 before_action :find_comment, only: [:edit, :update, :destroy]
 
   def new
@@ -7,6 +7,7 @@ before_action :find_comment, only: [:edit, :update, :destroy]
   end
 
   def create
+
     @comment = Comment.new(comment_params)
     @comment.bottle_id = @bottle.id
     @comment.user_id = current_user.id
@@ -20,9 +21,9 @@ before_action :find_comment, only: [:edit, :update, :destroy]
     end
   end
 
-  def show
-    render json: @comment
-  end
+  # def show
+  #   render json: @comment
+  # end
 
   def edit
     @bottle = Bottle.find(params[:bottle_id])

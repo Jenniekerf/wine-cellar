@@ -12,8 +12,12 @@ before_action :find_bottle, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-    render json: @bottle, status: 200
+    @comment = @bottle.comments.build
+    respond_to do |f|
+      f.html
+      f.json {render json: @bottle}
   end
+end
 
   def cheap
     @bottles = Bottle.cheap
@@ -52,7 +56,7 @@ before_action :find_bottle, only: [:show, :edit, :update, :destroy]
   end
 
   def home
-
+    @bottles = current_user.bottles
   end
 
   def home_index
