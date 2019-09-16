@@ -13,11 +13,11 @@ before_action :find_comment, only: [:edit, :update, :destroy]
     @comment.user_id = current_user.id
 
     if @comment.save
-      render json: @comment, status: 201
-      #redirect_to bottle_path(@bottle)
+      #render json: @comment, status: 201
+      redirect_to bottle_path(@bottle)
     else
-      render json: { errors: @comment.errors.full_messages }, status: :bad_request
-      #render 'new'
+      #render json: { errors: @comment.errors.full_messages }, status: :bad_request
+      render 'new'
     end
   end
 

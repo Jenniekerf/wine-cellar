@@ -12,7 +12,7 @@ before_action :find_bottle, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-    @comment = @bottle.comments.build
+    #@comment = @bottle.comments.build
     respond_to do |f|
       f.html
       f.json {render json: @bottle}

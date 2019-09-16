@@ -57,6 +57,7 @@ function getBottles() {
 
 
  $(document).on('click', ".show_link", function(e) {
+   clearForm()
    e.preventDefault()
    $('#app-container').html('')
    let id = $(this).attr('data-id')
@@ -98,7 +99,6 @@ function displayBottleForm() {
   <input type="number" id="price_cents" min="1" max="5000" step="1" value="10"><br/>
   <label>Comments: </label>
   <input type="textarea" id="comments"></br>
-
   <input type="submit" value="Submit">
 </form>
 `
@@ -140,8 +140,6 @@ function createBottle() {
     bottleFormDiv.innerHTML = '';
   })
 }
-
-
 
 function clearForm() {
   let bottleFormDiv = document.getElementById('bottle-form');
