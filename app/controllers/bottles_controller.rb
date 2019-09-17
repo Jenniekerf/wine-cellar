@@ -12,7 +12,6 @@ before_action :find_bottle, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-    #@comment = @bottle.comments.build
     respond_to do |f|
       f.html
       f.json {render json: @bottle}
@@ -32,6 +31,7 @@ end
   end
 
   def red_wine
+    #binding.pry
     @bottles = Bottle.red_wine
   end
 
@@ -70,6 +70,7 @@ end
 
   def create
     @bottle = current_user.bottles.build(bottle_params)
+
     if @bottle.save
       render json: @bottle, status: 201
     else

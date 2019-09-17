@@ -88,12 +88,12 @@ function displayBottleForm() {
   <input type="number" id="year" min="1950" max="2099" step="1" value="2019"/><br/>
   <label>Category: </label>
 <select id="category">
-  <option value="red">Red</option>
-  <option value="white">White</option>
-  <option value="rose">Rose</option>
-  <option value="orange">Orange</option>
-  <option value="sparkling">Sparkling</option>
-  <option value="dessert">Dessert</option>
+  <option value="Red">Red</option>
+  <option value="White">White</option>
+  <option value="Rosé">Rose</option>
+  <option value="Orange">Orange</option>
+  <option value="Sparkling">Sparkling</option>
+  <option value="Dessert">Dessert</option>
 </select><br/>
   <label>Price in USD: </label>
   <input type="number" id="price_cents" min="1" max="5000" step="1" value="10"><br/>
@@ -104,6 +104,7 @@ function displayBottleForm() {
 `
 
 bottleFormDiv.innerHTML = html;
+
 }
 
 
@@ -121,7 +122,7 @@ function createBottle() {
     price_cents: document.getElementById('price_cents').valueAsNumber,
     comments: document.getElementById('comments').value
     }
-
+debugger
   fetch(BASE_URL + '/bottles/home_index', {
     method: 'POST',
       body: JSON.stringify({ bottle }),
