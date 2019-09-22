@@ -16,12 +16,6 @@ class Bottle {
 	}
 
   renderBottles(){
-    let bottleComments = this.comments.map(comment => {
-      return (`
-        <p>${comment.tasting_note}</p>
-      `)
-    }).join('')
-
     return (`<a href="/bottles/${this.id}" data-id="${this.id}" class="show_link"><h1>${this.name}</br></h1></a>`)
 
   }
@@ -75,6 +69,7 @@ function getBottles() {
 
 
 function displayBottleForm() {
+  clearForm();
   let bottleFormDiv = document.getElementById('bottle-form');
   let html = `
 <form onsubmit="createBottle(); return false;">
@@ -97,8 +92,7 @@ function displayBottleForm() {
 </select><br/>
   <label>Price in USD: </label>
   <input type="number" id="price_cents" min="1" max="5000" step="1" value="10"><br/>
-  <label>Comments: </label>
-  <input type="textarea" id="comments"></br>
+  
   <input type="submit" value="Submit">
 </form>
 `
@@ -120,9 +114,9 @@ function createBottle() {
     year: document.getElementById('year').valueAsNumber,
     category: document.getElementById('category').value,
     price_cents: document.getElementById('price_cents').valueAsNumber,
-    comments: document.getElementById('comments').value
+    //comments: document.getElementById('comments').value
     }
-debugger
+
   fetch(BASE_URL + '/bottles/home_index', {
     method: 'POST',
       body: JSON.stringify({ bottle }),

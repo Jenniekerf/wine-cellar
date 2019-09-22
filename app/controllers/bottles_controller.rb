@@ -76,6 +76,7 @@ end
     else
       render json: @bottle, status: :bad_request
     end
+
     # @bottle = current_user.bottles.build(bottle_params)
     #
     # if @bottle.save
@@ -84,6 +85,9 @@ end
     #   render 'new'
     #   end
   end
+
+
+
 
   def edit
 

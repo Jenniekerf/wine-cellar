@@ -21,9 +21,9 @@ before_action :find_comment, only: [:edit, :update, :destroy]
     end
   end
 
-  # def show
-  #   render json: @comment
-  # end
+  def show
+    render json: @comment
+  end
 
   def edit
     @bottle = Bottle.find(params[:bottle_id])
