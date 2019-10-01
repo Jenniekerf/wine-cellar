@@ -33,8 +33,6 @@ class Bottle {
 }
 
 
-
-
 function getBottles() {
   clearForm();
  let main = document.getElementById('main');
@@ -53,7 +51,7 @@ function getBottles() {
  $(document).on('click', ".show_link", function(e) {
    clearForm()
    e.preventDefault()
-   $('#app-container').html('')
+   $('#js-container').html('')
    let id = $(this).attr('data-id')
    fetch(`/bottles/${id}.json`)
    .then(res => res.json())
@@ -61,7 +59,7 @@ function getBottles() {
     let newBottle = new Bottle(bottle)
     let bottleHtml = newBottle.renderBottle()
 
-    $('#app-container').append(bottleHtml)
+    $('#js-container').append(bottleHtml)
     })
   })
 }
@@ -92,7 +90,7 @@ function displayBottleForm() {
 </select><br/>
   <label>Price in USD: </label>
   <input type="number" id="price_cents" min="1" max="5000" step="1" value="10"><br/>
-  
+
   <input type="submit" value="Submit">
 </form>
 `
@@ -135,6 +133,16 @@ function createBottle() {
     bottleFormDiv.innerHTML = '';
   })
 }
+
+// let count = 0
+//
+// function countClicks() {
+// 	count += 1;
+// document.getElementById("counter").innerHTML = count;
+//
+// }
+
+
 
 function clearForm() {
   let bottleFormDiv = document.getElementById('bottle-form');

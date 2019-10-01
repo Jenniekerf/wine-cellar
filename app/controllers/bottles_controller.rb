@@ -31,7 +31,6 @@ end
   end
 
   def red_wine
-    #binding.pry
     @bottles = Bottle.red_wine
   end
 

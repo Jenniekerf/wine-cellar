@@ -3,9 +3,6 @@
 <h4>Variety:</h4>
 <h3><%= @bottle.variety %></h3>
 <br>
-<h4>Year:<h4>
-<h3><%= @bottle.year.year %></h3>
-<br>
 <h4>Producer:</h4>
 <h3><%= @bottle.producer %></h3>
 <br>
@@ -16,7 +13,7 @@
 <%= render @bottle.comments %>
 <br>
 
-<!-- <a href="#" onclick="displayCommentForm(); return false;">Add comment</a> -->
+
 
 <div>
 <%= link_to "Add Tasting Notes", new_bottle_comment_path(@bottle) %>
