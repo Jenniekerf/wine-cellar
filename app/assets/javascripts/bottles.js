@@ -27,9 +27,12 @@ class Bottle {
       `)
     }).join('')
 
-    return (`<h2>${this.name}</h2><h3>Variety:</h3><h4>${this.variety}</h4><h3>Producer: </h3><h4>${this.producer}</h4><h3>Year: </h3><h4>${this.year}</h4><h3>Category: </h3><h4>${this.category}</h4><h3>Price: </h3><h4>$${this.price_cents}</h4><h3>Tasting notes: </h3><h4>${bottleComments}<a href="/bottles/${this.id}/edit" data-id="${this.id}" class="edit-bottle">Edit Bottle</a></h4>`)
-
+    return (`<h2>${this.name}</h2><h3>Variety:</h3><h4>${this.variety}</h4><h3>Producer: </h3><h4>${this.producer}</h4><h3>Year: </h3><h4>${this.year}</h4><h3>Category: </h3><h4>${this.category}</h4><h3>Price: </h3><h4>$${this.price_cents}</h4><h3>Tasting notes: </h3><h4>${bottleComments}<a href="/bottles/${this.id}/edit" data-id="${this.id}" class="edit_bottle">Edit Bottle</a></h4>`)
   }
+
+	// editBottle() {
+	// 	console.log("hi")
+	// }
 }
 
 
@@ -62,6 +65,26 @@ function getBottles() {
     $('#js-container').append(bottleHtml)
     })
   })
+
+	// $(document).on('click', ".edit_bottle", function(e) {
+  //   // clearForm()
+  //   e.preventDefault()
+  //   $('#js-container').html('')
+  //   let id = $(this).attr('data-id')
+  //   fetch(`/bottles/${id}/edit.json`)
+	//
+  // //This is where I get stuck! I don't know how to take the values,//
+	// //display them in the form to then be able to edit them//
+	//
+	// //If I figured out how to do that I'd then do as below and show the updated bottle on a show page//
+  //   .then(res => res.json())
+  //   .then(bottle => {
+  //    let updatedBottle = new Bottle(bottle)
+  //    let updatedBottleHtml = updatedBottle.renderBottle()
+	//
+  //    $('#js-container').append(updatedBottleHtml)
+  //    })
+  //  })
 
 }
 

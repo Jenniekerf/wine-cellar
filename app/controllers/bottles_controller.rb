@@ -86,8 +86,6 @@ end
   end
 
 
-
-
   def edit
     		respond_to do |f|
     			f.html {render :edit}
