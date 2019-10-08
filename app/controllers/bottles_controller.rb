@@ -1,5 +1,5 @@
 class BottlesController < ApplicationController
-skip_before_action :verify_authenticity_token, only: [:home_index, :create]
+skip_before_action :verify_authenticity_token, only: [:home_index, :create, :update]
 skip_before_action :require_login, only: [:index, :show, :cheap, :moderate, :fancy, :red_wine, :white_wine, :rosé_wine, :orange_wine, :sparkling_wine, :dessert_wine]
 before_action :find_bottle, only: [:show, :edit, :update, :destroy]
 
@@ -95,9 +95,11 @@ end
 
   def update
     if @bottle.update(bottle_params)
-      redirect_to bottle_path(@bottle)
+      render json: @bottle, status: 201
+      # redirect_to bottle_path(@bottle)
     else
-      render 'edit'
+      render json: @bottle, status: :bad_request
+      # render 'edit'
     end
   end
 

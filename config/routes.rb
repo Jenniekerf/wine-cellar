@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get '/bottles/home_index' => 'bottles#home_index'
   post '/bottles/home_index' => 'bottles#create'
   post '/bottles/home_index' => 'bottles#show'
-
+  patch '/bottles/home_index' => 'bottles#update'
 
   resources :bottles do
     resources :comments

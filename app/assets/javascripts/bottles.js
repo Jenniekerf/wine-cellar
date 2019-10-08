@@ -27,12 +27,9 @@ class Bottle {
       `)
     }).join('')
 
-    return (`<h2>${this.name}</h2><h3>Variety:</h3><h4>${this.variety}</h4><h3>Producer: </h3><h4>${this.producer}</h4><h3>Year: </h3><h4>${this.year}</h4><h3>Category: </h3><h4>${this.category}</h4><h3>Price: </h3><h4>$${this.price_cents}</h4><h3>Tasting notes: </h3><h4>${bottleComments}<a href="/bottles/${this.id}/edit" data-id="${this.id}" class="edit_bottle">Edit Bottle</a></h4>`)
+    return (`<h2>${this.name}</h2><h3>Variety:</h3><h4>${this.variety}</h4><h3>Producer: </h3><h4>${this.producer}</h4><h3>Year: </h3><h4>${this.year}</h4><h3>Category: </h3><h4>${this.category}</h4><h3>Price: </h3><h4>$${this.price_cents}</h4><h3>Tasting notes: </h3><h4>${bottleComments}</h4><a onclick="editBottle(event);" data-id="${this.id}" style="color: #337ab7; text-decoration: none; cursor: pointer;">Edit Bottle</a>`)
   }
 
-	// editBottle() {
-	// 	console.log("hi")
-	// }
 }
 
 
@@ -65,26 +62,6 @@ function getBottles() {
     $('#js-container').append(bottleHtml)
     })
   })
-
-	// $(document).on('click', ".edit_bottle", function(e) {
-  //   // clearForm()
-  //   e.preventDefault()
-  //   $('#js-container').html('')
-  //   let id = $(this).attr('data-id')
-  //   fetch(`/bottles/${id}/edit.json`)
-	//
-  // //This is where I get stuck! I don't know how to take the values,//
-	// //display them in the form to then be able to edit them//
-	//
-	// //If I figured out how to do that I'd then do as below and show the updated bottle on a show page//
-  //   .then(res => res.json())
-  //   .then(bottle => {
-  //    let updatedBottle = new Bottle(bottle)
-  //    let updatedBottleHtml = updatedBottle.renderBottle()
-	//
-  //    $('#js-container').append(updatedBottleHtml)
-  //    })
-  //  })
 
 }
 
@@ -135,7 +112,7 @@ function createBottle() {
     //comments: document.getElementById('comments').value
     }
 
-  fetch(BASE_URL + '/bottles/home_index', {
+  fetch('/bottles/home_index', {
     method: 'POST',
       body: JSON.stringify({ bottle }),
 
@@ -151,6 +128,83 @@ function createBottle() {
 
     let bottleFormDiv = document.getElementById('bottle-form');
     bottleFormDiv.innerHTML = '';
+  })
+}
+
+
+function patchBottle(event) {
+  event.preventDefault();
+  const bottle = {
+
+    name: document.getElementById('name').value,
+    variety: document.getElementById('variety').value,
+    producer: document.getElementById('producer').value,
+    year: document.getElementById('year').valueAsNumber,
+    category: document.getElementById('category').value,
+    price_cents: document.getElementById('price_cents').valueAsNumber,
+    //comments: document.getElementById('comments').value
+  }
+  id = parseInt(event.target.attributes["data-id"].value);
+  fetch(BASE_URL + `/bottles/${id}`, {
+    method: 'PATCH',
+    body: JSON.stringify({ bottle }),
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  })
+	  .then(resp => resp.json())
+    .then(bottle => {
+    document.querySelector('#js-container').innerHTML = '';
+    let updatedBottle = new Bottle(bottle)
+    let bottleHtml = updatedBottle.renderBottle()
+
+    document.querySelector("#js-container").innerHTML = bottleHtml;
+  })
+}
+
+function editBottle(e) {
+  let id;
+  e.preventDefault();
+  id = parseInt(event.target.attributes["data-id"].value);
+  fetch(BASE_URL + `/bottles/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  })
+  .then(resp => resp.json())
+  .then(bottle => {
+    let container, html;
+    document.querySelector('#js-container').innerHTML = '';
+    html =
+      `<form onsubmit="patchBottle(event); return false;" data-id="${bottle.id}">
+        <label>Name: </label>
+      <input type="text" id="name" class="form-control" value="${bottle.name}"><br/>
+        <label>Variety: </label>
+      <input type="text" id="variety" class="form-control" value="${bottle.variety}"><br/>
+      <label>Producer: </label>
+      <input type="text" id="producer" class="form-control" value="${bottle.producer}"><br/>
+      <label>Year: </label>
+      <input type="number" id="year" class="form-control" min="1950" max="2099" step="1" value="2019"/><br/>
+      <label>Category: </label>
+    <select id="category" class="form-control">
+      <option value="Red">Red</option>
+      <option value="White">White</option>
+      <option value="Rosé">Rose</option>
+      <option value="Orange">Orange</option>
+      <option value="Sparkling">Sparkling</option>
+      <option value="Dessert">Dessert</option>
+    </select><br/>
+      <label>Price in USD: </label>
+      <input type="number" id="price_cents" class="form-control" min="1" max="5000" step="1" value="${bottle.price_cents}"><br/>
+      <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+  `
+  document.querySelector('#js-container').innerHTML = html
+  document.querySelector('#category').value = bottle.category
+  document.querySelector('#year').value = bottle.year
   })
 }
 
